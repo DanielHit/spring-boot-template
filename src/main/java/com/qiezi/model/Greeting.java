@@ -1,4 +1,4 @@
-package model;
+package com.qiezi.model;
 
 public class Greeting {
 

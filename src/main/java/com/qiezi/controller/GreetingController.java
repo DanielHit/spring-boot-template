@@ -1,6 +1,6 @@
-package controller;
+package com.qiezi.controller;
 
-import model.Greeting;
+import com.qiezi.model.Greeting;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,4 +18,5 @@ public class GreetingController {
         return new Greeting(counter.incrementAndGet(),
                             String.format(template, name));
     }
+
 }
