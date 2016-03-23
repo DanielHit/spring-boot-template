@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@ConfigurationProperties(prefix = "my")
+@ConfigurationProperties(prefix = "my") // 进行相应的配置
 public class Config {
+
     private List<String> servers = new ArrayList<String>();
 
     public List<String> getServers() {
         return this.servers;
     }
-
-
+    
 }

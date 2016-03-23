@@ -26,6 +26,7 @@ public class IndexController {
     public Map<String, Object> greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
         HashMap<String, Object> resultMap = new HashMap<>();
         resultMap.put("list", config.getServers());
+        resultMap.put("username",userName);
         return resultMap;
     }
 
