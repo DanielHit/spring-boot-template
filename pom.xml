@@ -36,6 +36,24 @@
             <artifactId>spring-boot-starter-jetty</artifactId>
         </dependency>
 
+        <!--config log-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+
+
         <!--增加mybatis的配置-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -74,22 +92,6 @@
             <optional>true</optional>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>org.springFramework</groupId>-->
-            <!--<artifactId>spring-test</artifactId>-->
-            <!--<version>4.0.1.RELEASE</version>-->
-            <!--<scope>test</scope>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-sample-data-jpa</artifactId>-->
-            <!--<version>0.5.0.M7</version>-->
-            <!--<scope>test</scope>-->
-        <!--</dependency>-->
-
-
-
     </dependencies>
 
     <build>
@@ -98,6 +100,23 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.2.3</version>
+                <configuration>
+                    <imageName>DanielHu/spring-boot-docker</imageName>
+                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
